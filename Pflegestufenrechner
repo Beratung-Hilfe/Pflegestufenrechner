@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pflegegeldrechner | Beratung & Hilfe Holzinger e.U.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background-color: #144c7c;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #144c7c;
+    }
+    .step {
+      display: none;
+    }
+    .step.active {
+      display: block;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input[type="checkbox"] {
+      margin-right: 10px;
+    }
+    .buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+    }
+    button {
+      background-color: #144c7c;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #e0f2f1;
+      border-left: 5px solid #00796b;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #eee;
+      font-size: 0.9em;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Pflegegeldrechner</h1>
+  <p>Beratung & Hilfe Holzinger e.U.</p>
+</header>
+
+<main>
+  <form id="quizForm">
+    <!-- Schritte 1 bis 8 -->
+    <div class="step active" id="step1">
+      <h2>Schritt 1: Mobilität</h2>
+      <label><input type="checkbox" class="pflegeCheck" value="15"> Hilfe beim Aufstehen und Hinlegen</label>
+      <label><input type="checkbox" class="pflegeCheck" value="15"> Hilfe beim Umsetzen (z. B. Bett - Rollstuhl)</label>
+      <label><input type="checkbox" class="pflegeCheck" value="20"> Hilfe beim Gehen innerhalb der Wohnung</label>
+      <label><input type="checkbox" class="pflegeCheck" value="30"> Hilfe beim Verlassen der Wohnung</label>
+      <label><input type="checkbox" class="pflegeCheck" value="30"> Hilfe beim Treppensteigen</label>
+    </div>
+
+    <div class="step" id="step2">
+      <h2>Schritt 2: Körperpflege</h2>
+      <label><input type="checkbox" class="pflegeCheck" value="15"> Hilfe beim Waschen</label>
+      <label><input type="checkbox" class="pflegeCheck" value="20"> Hilfe beim Duschen oder Baden</label>
+      <label><input type="checkbox" class="pflegeCheck" value="10"> Hilfe bei Mundhygiene, Rasur, Kämmen</label>
+      <label><input type="checkbox" class="pflegeCheck" value="15"> Hilfe beim Toilettengang</label>
+      <label><input type="checkbox" class="pflegeCheck" value="10"> Hilfe beim Ankleiden</label>
+    </div>
+
+    <div class="step" id="step3">
+      <h2>Schritt 3: Ernährung & Trinken</h2>
+      <label><input type="checkbox" class="pflegeCheck" value="20"> Hilfe beim Zubereiten von Speisen</label>
+      <label><input type="checkbox" class="pflegeCheck" value="25"> Hilfe beim Essen</label>
+      <label><input type="checkbox" class="pflegeCheck" value="15"> Hilfe beim Trinken</label>
+      <label><input type="checkbox" class="pflegeCheck" value="20"> Erinnerung an ausreichendes Trinken</label>
+    </div>
+
+    <div class="step" id="step4">
+      <h2>Schritt 4: Ausscheidung</h2>
+      <label><input type="checkbox" class="pflegeCheck" value="20"> Hilfe beim Gang zur Toilette</label>
+      <label><input type="checkbox" class="pflegeCheck" value="25"> Hilfe beim Reinigen nach Ausscheidung</label>
+      <label><input type="checkbox" class="pflegeCheck" value="30"> Wechsel von Inkontinenzprodukten</label>
+      <label><input type="checkbox" class="pflegeCheck" value="35"> Versorgung von Katheter oder Stoma</label>
+      <label><input type="checkbox" class="pflegeCheck" value="20"> Entleerung von Harn-/Stuhlfangsystemen</label>
+    </div>
+
+    <div class="step" id="step5">
+      <h2>Schritt 5: Nächtlicher Pflegebedarf</h2>
+      <label><input type="checkbox" class="pflegeCheck" value="30"> Nächtlicher Toilettengang</label>
+      <label><input type="checkbox" class="pflegeCheck" value="30"> Umlagern in der Nacht</label>
+      <label><input type="checkbox" class="pflegeCheck" value="30"> Beruhigung bei nächtlicher Unruhe</label>
+      <label><input type="checkbox" class="pflegeCheck" value="40"> Nächtliche Rufbereitschaft</label>
+      <label><input type="checkbox" class="pflegeCheck" value="60"> Dauerhafte nächtliche Überwachung</label>
+    </div>
+
+    <div class="step" id="step6">
+      <h2>Schritt 6: Psychische & kognitive Einschränkungen</h2>
+      <label><input type="checkbox" class="pflegeCheck" value="30"> Erinnerung an alltägliche Aktivitäten</label>
+      <label><input type="checkbox" class="pflegeCheck" value="30"> Hilfe bei Orientierung</label>
+      <label><input type="checkbox" class="pflegeCheck" value="40"> Impulskontrolle / Verhalten</label>
+      <label><input type="checkbox" class="pflegeCheck" value="20"> Hilfe bei Demenz / Gedächtnis</label>
+      <label><input type="checkbox" class="pflegeCheck" value="30"> Aufsicht bei Weglauftendenz</label>
+    </div>
+
+    <div class="step" id="step7">
+      <h2>Schritt 7: Haushalt & Alltag</h2>
+      <label><input type="checkbox" class="pflegeCheck" value="20"> Einkaufen</label>
+      <label><input type="checkbox" class="pflegeCheck" value="30"> Kochen</label>
+      <label><input type="checkbox" class="pflegeCheck" value="25"> Reinigung der Wohnung</label>
+      <label><input type="checkbox" class="pflegeCheck" value="15"> Wäsche waschen</label>
+      <label><input type="checkbox" class="pflegeCheck" value="10"> Müllentsorgung</label>
+    </div>
+
+    <div class="step" id="step8">
+      <h2>Ergebnis</h2>
+      <div id="ergebnis" class="result"></div>
+    </div>
+
+    <div class="buttons">
+      <button type="button" id="zurueck" disabled>Zurück</button>
+      <button type="button" id="weiter">Weiter</button>
+    </div>
+  </form>
+</main>
+
+<footer>
+  © 2025 Beratung & Hilfe Holzinger e.U. | www.beratung-hilfe.at
+</footer>
+
+<script>
+  const steps = document.querySelectorAll('.step');
+  const weiterBtn = document.getElementById('weiter');
+  const zurueckBtn = document.getElementById('zurueck');
+  const ergebnisBox = document.getElementById('ergebnis');
+  let currentStep = 0;
+
+  function showStep(index) {
+    steps.forEach((step, i) => {
+      step.classList.toggle('active', i === index);
+    });
+    zurueckBtn.disabled = index === 0;
+    weiterBtn.textContent = index === steps.length - 1 ? 'Abschließen' : 'Weiter';
+  }
+
+  weiterBtn.addEventListener('click', () => {
+    if (currentStep < steps.length - 1) {
+      currentStep++;
+      showStep(currentStep);
+    } else {
+      const checks = document.querySelectorAll('.pflegeCheck:checked');
+      let pflegeMinuten = 0;
+      checks.forEach(cb => pflegeMinuten += parseInt(cb.value));
+      let stufe = 0;
+
+      if (pflegeMinuten >= 65 && pflegeMinuten < 95) stufe = 1;
+      else if (pflegeMinuten >= 95 && pflegeMinuten < 120) stufe = 2;
+      else if (pflegeMinuten >= 120 && pflegeMinuten < 160) stufe = 3;
+      else if (pflegeMinuten >= 160 && pflegeMinuten < 180) stufe = 4;
+      else if (pflegeMinuten >= 180 && pflegeMinuten < 300) stufe = 5;
+      else if (pflegeMinuten >= 300 && pflegeMinuten < 480) stufe = 6;
+      else if (pflegeMinuten >= 480) stufe = 7;
+
+      const geld = [0, 200.80, 370.30, 577.00, 865.10, 1175.20, 1641.10, 2156.60];
+      let html = `<strong>Pflegebedarf: ${pflegeMinuten} Minuten/Monat</strong><br>`;
+      if (stufe > 0) {
+        html += `Pflegestufe: <strong>${stufe}</strong><br>Monatliches Pflegegeld: <strong>${geld[stufe].toFixed(2)} €</strong>`;
+      } else {
+        html += 'Kein Anspruch auf Pflegegeld laut Eingaben.';
+      }
+      ergebnisBox.innerHTML = html;
+      showStep(currentStep);
+    }
+  });
+
+  zurueckBtn.addEventListener('click', () => {
+    if (currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+    }
+  });
+
+  showStep(currentStep);
+</script>
+
+</body>
+</html>
